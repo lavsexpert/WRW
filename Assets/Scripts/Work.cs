@@ -1,50 +1,89 @@
-﻿using UnityEngine;
+﻿using Game.Core;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class Work : MonoBehaviour
+namespace Scripts.Scenes
 {
-    public Button restButton, dreamButton, shopButton, menuButton;
-
-    void Start()
+    public class Work : MonoBehaviour
     {
-        Debug.Log("Work.OnStart()");
-        restButton.onClick.AddListener(RestPressed);
-        dreamButton.onClick.AddListener(DreamPressed);
-        shopButton.onClick.AddListener(ShopPressed);
-        menuButton.onClick.AddListener(MenuPressed);
-    }
+        private Core core;
+        public Text text;
+        public Button dreamButton, workButton, restButton, shopButton, menuButton;
 
-    public void RestPressed()
-    {
-        Debug.Log("Work.RestPressed()");
-        SceneManager.LoadScene("Rest");
-    }
+        void Start()
+        {
+            Debug.Log("Work.OnStart()");
+            core = Core.getInstance();
+            dreamButton.onClick.AddListener(DreamPressed);
+            workButton.onClick.AddListener(WorkPressed);
+            restButton.onClick.AddListener(RestPressed);
+            shopButton.onClick.AddListener(ShopPressed);
+            menuButton.onClick.AddListener(MenuPressed);
+            text.text = core.user.ToString;
+        }
 
-    public void DreamPressed()
-    {
-        Debug.Log("Work.DreamPressed()");
-        SceneManager.LoadScene("Dream");
-    }
+        public void DreamPressed()
+        {
+            Debug.Log("Work.DreamPressed()");
+            core.user.Dream();
+            text.text = core.user.ToString;
+            if (core.user.gameover)
+            {
+                SceneManager.LoadScene("Menu");
+            }
+            else
+            {
+                SceneManager.LoadScene("Dream");
+            }
+        }
 
-    public void ShopPressed()
-    {
-        Debug.Log("Work.ShopPressed()");
-        SceneManager.LoadScene("Shop");
-    }
+        public void WorkPressed()
+        {
+            Debug.Log("Work.WorkPressed()");
+            core.user.Work();
+            text.text = core.user.ToString;
+            if (core.user.gameover)
+            {
+                SceneManager.LoadScene("Menu");
+            }
+        }
 
-    public void MenuPressed()
-    {
-        Debug.Log("Work.MenuPressed()");
-        SceneManager.LoadScene("Menu");
-    }
+        public void RestPressed()
+        {
+            Debug.Log("Work.RestPressed()");
+            core.user.Rest();
+            text.text = core.user.ToString;
+            if (core.user.gameover)
+            {
+                SceneManager.LoadScene("Menu");
+            }
+            else
+            {
+                SceneManager.LoadScene("Rest");
+            }
+        }
 
-    public void Destroy()
-    {
-        Debug.Log("Work.Destroy()");
-        restButton.onClick.RemoveListener(RestPressed);
-        dreamButton.onClick.RemoveListener(DreamPressed);
-        shopButton.onClick.RemoveListener(ShopPressed);
-        menuButton.onClick.RemoveListener(MenuPressed);
+        public void ShopPressed()
+        {
+            Debug.Log("Work.ShopPressed()");
+            SceneManager.LoadScene("Shop");
+        }
+
+        public void MenuPressed()
+        {
+            Debug.Log("Work.MenuPressed()");
+            SceneManager.LoadScene("Menu");
+        }
+
+        public void Destroy()
+        {
+            Debug.Log("Work.Destroy()");
+            dreamButton.onClick.RemoveListener(DreamPressed);
+            workButton.onClick.RemoveListener(WorkPressed);
+            restButton.onClick.RemoveListener(RestPressed);
+            shopButton.onClick.RemoveListener(ShopPressed);
+            menuButton.onClick.RemoveListener(MenuPressed);
+        }
     }
 }
