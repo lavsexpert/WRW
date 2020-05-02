@@ -30,7 +30,7 @@ namespace Scripts.Scenes
             text.text = core.user.ToString;
             if (core.user.gameover)
             {
-                SceneManager.LoadScene("Menu");
+                SceneManager.LoadScene("Lose");
             }
             else
             {
@@ -45,7 +45,7 @@ namespace Scripts.Scenes
             text.text = core.user.ToString;
             if (core.user.gameover)
             {
-                SceneManager.LoadScene("Menu");
+                SceneManager.LoadScene("Lose");
             }
         }
 
@@ -56,7 +56,7 @@ namespace Scripts.Scenes
             text.text = core.user.ToString;
             if (core.user.gameover)
             {
-                SceneManager.LoadScene("Menu");
+                SceneManager.LoadScene("Lose");
             }
             else
             {

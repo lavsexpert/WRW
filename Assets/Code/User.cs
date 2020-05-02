@@ -18,6 +18,14 @@ namespace Game.Data
         public float sociability = 100.00f;     // Общительность
         public float mystic = 100.00f;          // Мистика
         public bool gameover = false;           // Игра закончена
+        public string losetext = "";            // Текст проигрыша
+
+        private float delta_money = 10.0f;
+        private float delta_mood = 10.0f;
+        private float delta_attention = 10.0f;
+        private float delta_mind = 10.0f;
+        private float delta_sociability = 10.0f;
+        private float delta_mystic = 10.0f;
 
         // Установка времени и даты в игре
         public void SetTime()
@@ -37,6 +45,7 @@ namespace Game.Data
             sociability = 100.00f;
             mystic = 100.00f;
             gameover = false;
+            losetext = "";
             SetTime();
         }
 
@@ -58,42 +67,76 @@ namespace Game.Data
         // Поспать
         public void Dream()
         {
-            mood++;
-            mystic++;
-            mind--;
-            sociability--;
+            mood += delta_mood;
+            mystic += delta_mystic;
+            mind -= delta_mind;
+            sociability -= delta_sociability;
             AddHour();
             if (mind <= 0 || sociability <= 0)
             {
                 gameover = true;
+                if (mind <= 0 && sociability <= 0)
+                {
+                    losetext = name + " убежал в лес и там сошёл с ума, став лешим.";
+                } else if (mind <= 0)
+                {
+                    losetext = name + " начал кидаться на людей и его увезли в психушку.";
+                } else if (sociability <= 0)
+                {
+                    losetext = name + " подстригся в монахи и ушёл в монастырь.";
+                }
             }
         }
 
         // Поработать
         public void Work()
         {
-            money++;
-            mind++;
-            mood--;
-            attention--;
+            money += delta_money;
+            mind += delta_mind;
+            mood -= delta_mood;
+            attention -= delta_attention;
             AddHour();
             if (mood <= 0 || attention <= 0)
             {
                 gameover = true;
+                if (mood <= 0 && attention <= 0)
+                {
+                    losetext = name + " после неудачной попытки самоубийства стал инвалидом.";
+                }
+                else if (mood <= 0)
+                {
+                    losetext = name + " спрыгнул с крыши небоскрёба.";
+                }
+                else if (attention <= 0)
+                {
+                    losetext = name + " попал под машину и теперь лежит в коме.";
+                }
             }
         }
 
         // Отдохнуть
         public void Rest()
         {
-            attention++;
-            sociability++;
-            money--;
-            mystic--;
+            attention += delta_attention;
+            sociability += delta_sociability;
+            money -= delta_money;
+            mystic -= delta_mystic;
             AddHour();
             if (money <= 0 || mystic <= 0)
             {
                 gameover = true;
+                if (money <= 0 && mystic <= 0)
+                {
+                    losetext = name + " был похищен и попал в рабство.";
+                }
+                else if (money <= 0)
+                {
+                    losetext = name + " набрал кредитов и теперь банкрот.";
+                }
+                else if (mystic <= 0)
+                {
+                    losetext = name + " стал зомби после шаманского ритуала.";
+                }
             }
         }
 
