@@ -8,33 +8,34 @@ public class Menu : MonoBehaviour
 
     void Start()
     {
-        Debug.Log("OnStart()");
-        startButton.onClick.AddListener(() => StartPressed());
-        restoreButton.onClick.AddListener(() => RestorePressed());
-        exitButton.onClick.AddListener(() => ExitPressed());
+        Debug.Log("Menu.OnStart()");
+        startButton.onClick.AddListener(StartPressed);
+        restoreButton.onClick.AddListener(RestorePressed);
+        exitButton.onClick.AddListener(ExitPressed);
     }
 
     public void StartPressed()
     {
-        SceneManager.LoadScene("Profile");
-        Debug.Log("StartPressed()");
+        Debug.Log("Menu.StartPressed()");
+        SceneManager.LoadScene("Dream");
     }
 
     public void RestorePressed()
     {
-        Debug.Log("RestorePressed()");
+        Debug.Log("Menu.RestorePressed()");
     }
 
     public void ExitPressed()
     {
+        Debug.Log("Menu.ExitPressed()");
         Application.Quit();
-        Debug.Log("ExitPressed()");
     }
 
     public void Destroy()
     {
-        startButton.onClick.RemoveListener(() => StartPressed());
-        restoreButton.onClick.RemoveListener(() => RestorePressed());
-        exitButton.onClick.RemoveListener(() => ExitPressed());
+        Debug.Log("Menu.Destroy()");
+        startButton.onClick.RemoveListener(StartPressed);
+        restoreButton.onClick.RemoveListener(RestorePressed);
+        exitButton.onClick.RemoveListener(ExitPressed);
     }
 }
