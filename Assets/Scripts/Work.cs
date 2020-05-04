@@ -8,7 +8,7 @@ namespace Scripts.Scenes
     public class Work : MonoBehaviour
     {
         private Core core;
-        public Text text;
+        public Text textMoney, textMood, textAttention, textMind, textSociability, textMystic;
         public Button dreamButton, workButton, restButton, shopButton, menuButton;
 
         void Start()
@@ -20,14 +20,14 @@ namespace Scripts.Scenes
             restButton.onClick.AddListener(RestPressed);
             shopButton.onClick.AddListener(ShopPressed);
             menuButton.onClick.AddListener(MenuPressed);
-            text.text = core.user.ToString;
+            SetText();
         }
 
         public void DreamPressed()
         {
             Debug.Log("Work.DreamPressed()");
             core.user.Dream();
-            text.text = core.user.ToString;
+            SetText();
             if (core.user.gameover)
             {
                 SceneManager.LoadScene("Lose");
@@ -42,7 +42,7 @@ namespace Scripts.Scenes
         {
             Debug.Log("Work.WorkPressed()");
             core.user.Work();
-            text.text = core.user.ToString;
+            SetText();
             if (core.user.gameover)
             {
                 SceneManager.LoadScene("Lose");
@@ -53,7 +53,7 @@ namespace Scripts.Scenes
         {
             Debug.Log("Work.RestPressed()");
             core.user.Rest();
-            text.text = core.user.ToString;
+            SetText();
             if (core.user.gameover)
             {
                 SceneManager.LoadScene("Lose");
@@ -84,6 +84,16 @@ namespace Scripts.Scenes
             restButton.onClick.RemoveListener(RestPressed);
             shopButton.onClick.RemoveListener(ShopPressed);
             menuButton.onClick.RemoveListener(MenuPressed);
+        }
+
+        private void SetText()
+        {
+            textMoney.text = core.user.money.ToString();
+            textMood.text = core.user.mood.ToString();
+            textAttention.text = core.user.attention.ToString();
+            textMind.text = core.user.mind.ToString();
+            textSociability.text = core.user.sociability.ToString();
+            textMystic.text = core.user.mystic.ToString();
         }
     }
 }
