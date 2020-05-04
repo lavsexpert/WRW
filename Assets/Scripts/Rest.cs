@@ -8,7 +8,7 @@ namespace Scripts.Scenes
     public class Rest : MonoBehaviour
     {
         private Core core;
-        public Text textMoney, textMood, textAttention, textMind, textSociability, textMystic;
+        public Text textMoney, textMood, textAttention, textMind, textSociability, textMystic, textTime, textDate, textWeekDay;
         public Button dreamButton, workButton, restButton, shopButton, menuButton;
 
         void Start()
@@ -94,6 +94,9 @@ namespace Scripts.Scenes
             textMind.text = core.user.mind.ToString();
             textSociability.text = core.user.sociability.ToString();
             textMystic.text = core.user.mystic.ToString();
+            textTime.text = core.user.hour.ToString() + ":00";
+            textDate.text = "День " + core.user.day.ToString();
+            textWeekDay.text = core.user.GetWeekDay();
         }
     }
 }

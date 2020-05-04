@@ -19,6 +19,7 @@ namespace Game.Data
         public float mind = 100.00f;            // Ум
         public float sociability = 100.00f;     // Общительность
         public float mystic = 100.00f;          // Мистика
+
         public bool gameover = false;           // Игра закончена
         public string losetext = "";            // Текст проигрыша
         public string loseimage = "";           // Картинка проигрыша
@@ -60,6 +61,7 @@ namespace Game.Data
             hour = hour + 1;
             if (hour > 23)
             {
+                hour = 0;
                 day = day + 1;
                 weekday = weekday + 1;
                 if (weekday > 7)
@@ -167,6 +169,29 @@ namespace Game.Data
                 text += sociability.ToString()  + "\t общение\n";
                 text += mystic.ToString()       + "\t мистика";
                 return text;
+            }
+        }
+
+        public string GetWeekDay()
+        {
+            switch (weekday)
+            {
+                case 1:
+                    return "Понедельник";
+                case 2:
+                    return "Вторник";
+                case 3:
+                    return "Среда";
+                case 4:
+                    return "Четверг";
+                case 5:
+                    return "Пятница";
+                case 6:
+                    return "Суббота";
+                case 7:
+                    return "Воскресенье";
+                default:
+                    return "";
             }
         }
     }
