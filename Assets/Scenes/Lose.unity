@@ -386,7 +386,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 752, y: 371}
+  m_SizeDelta: {x: 984.88965, y: 499.7453}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1350195458
 MonoBehaviour:
@@ -401,14 +401,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 0.392}
+  m_Color: {r: 0.6037736, g: 0.6037736, b: 0.6037736, a: 0.392}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: e1bad36c400e8a74a8fb05a79e736dd7, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -475,7 +475,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   text: {fileID: 2124238934}
+  panel: {fileID: 1350195458}
   menuButton: {fileID: 1937788459}
+  sprite: {fileID: 21300000, guid: e1bad36c400e8a74a8fb05a79e736dd7, type: 3}
+  bankrupt: {fileID: 21300000, guid: e8acca03dfe0f0148a1cde58af65e0d9, type: 3}
+  coma: {fileID: 21300000, guid: eb241dc332bd21d4f8a26d92296048b2, type: 3}
+  disabled: {fileID: 21300000, guid: f4fba6bd05099ec49b38d5014af678dd, type: 3}
+  goblin: {fileID: 21300000, guid: 82b1c960ef21700429512983c1a9ec19, type: 3}
+  hermit: {fileID: 21300000, guid: 099405a0298c9f04b92f8c6c1a482db7, type: 3}
+  madness: {fileID: 21300000, guid: 269162bc9fcafce4081472628c05d064, type: 3}
+  slavery: {fileID: 21300000, guid: 34a906b4107d0014093e9ee913d21d2a, type: 3}
+  suicide: {fileID: 21300000, guid: 5e82fdcf4b5788c47a2c33345087eed4, type: 3}
+  zombie: {fileID: 21300000, guid: b41177e3180621646973c8fe714dedf2, type: 3}
 --- !u!1 &1679506156
 GameObject:
   m_ObjectHideFlags: 0

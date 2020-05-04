@@ -1,10 +1,12 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Game.Data
 {
     public class User
     {
-        public string name = "Noob";            // Имя
+        public string name = "Noob";            // Имя героя
+        public List<Product> items;             // Предметы героя
 
         public DateTime date = DateTime.Today;  // Дата в игре             
         public int weekday = 0;                 // Текущий день недели игры
@@ -19,13 +21,14 @@ namespace Game.Data
         public float mystic = 100.00f;          // Мистика
         public bool gameover = false;           // Игра закончена
         public string losetext = "";            // Текст проигрыша
+        public string loseimage = "";           // Картинка проигрыша
 
-        private float delta_money = 10.0f;
-        private float delta_mood = 10.0f;
-        private float delta_attention = 10.0f;
-        private float delta_mind = 10.0f;
-        private float delta_sociability = 10.0f;
-        private float delta_mystic = 10.0f;
+        private float delta_money = 50.0f;
+        private float delta_mood = 50.0f;
+        private float delta_attention = 50.0f;
+        private float delta_mind = 50.0f;
+        private float delta_sociability = 50.0f;
+        private float delta_mystic = 50.0f;
 
         // Установка времени и даты в игре
         public void SetTime()
@@ -33,6 +36,7 @@ namespace Game.Data
             day = 1;
             weekday = ((int)date.DayOfWeek + 6) % 7 + 1;    // Получение дня недели: 1 - пн, 2 - вт, ..., 7 - вс
             hour = date.Hour;
+            items = new List<Product>();
         }
 
         // Обнуление пользователя (например, при старте новой игры)
@@ -46,6 +50,7 @@ namespace Game.Data
             mystic = 100.00f;
             gameover = false;
             losetext = "";
+            loseimage = "";
             SetTime();
         }
 
@@ -78,12 +83,16 @@ namespace Game.Data
                 if (mind <= 0 && sociability <= 0)
                 {
                     losetext = name + " убежал в лес и там сошёл с ума, став лешим.";
+                    loseimage = "goblin";
                 } else if (mind <= 0)
                 {
                     losetext = name + " начал кидаться на людей и его увезли в психушку.";
-                } else if (sociability <= 0)
+                    loseimage = "madness";
+                }
+                else if (sociability <= 0)
                 {
                     losetext = name + " подстригся в монахи и ушёл в монастырь.";
+                    loseimage = "hermit";
                 }
             }
         }
@@ -102,14 +111,17 @@ namespace Game.Data
                 if (mood <= 0 && attention <= 0)
                 {
                     losetext = name + " после неудачной попытки самоубийства стал инвалидом.";
+                    loseimage = "disabled";
                 }
                 else if (mood <= 0)
                 {
                     losetext = name + " спрыгнул с крыши небоскрёба.";
+                    loseimage = "suicide";
                 }
                 else if (attention <= 0)
                 {
                     losetext = name + " попал под машину и теперь лежит в коме.";
+                    loseimage = "coma";
                 }
             }
         }
@@ -128,14 +140,17 @@ namespace Game.Data
                 if (money <= 0 && mystic <= 0)
                 {
                     losetext = name + " был похищен и попал в рабство.";
+                    loseimage = "slavery";
                 }
                 else if (money <= 0)
                 {
                     losetext = name + " набрал кредитов и теперь банкрот.";
+                    loseimage = "bankrupt";
                 }
                 else if (mystic <= 0)
                 {
                     losetext = name + " стал зомби после шаманского ритуала.";
+                    loseimage = "zombie";
                 }
             }
         }

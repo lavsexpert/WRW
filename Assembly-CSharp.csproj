@@ -63,6 +63,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Code\Core.cs" />
+    <Compile Include="Assets\Code\Product.cs" />
     <Compile Include="Assets\Code\User.cs" />
     <Compile Include="Assets\Scripts\Dream.cs" />
     <Compile Include="Assets\Scripts\Lose.cs" />

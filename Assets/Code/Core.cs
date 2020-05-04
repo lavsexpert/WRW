@@ -1,4 +1,5 @@
 ﻿using Game.Data;
+using System.Collections.Generic;
 
 namespace Game.Core
 {
@@ -7,6 +8,7 @@ namespace Game.Core
         private static Core instance;
 
         public User user;
+        public List<Product> shop = new List<Product>();
 
         // Главная функция
         public static void Main()
