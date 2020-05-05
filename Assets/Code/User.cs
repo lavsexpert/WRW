@@ -24,12 +24,12 @@ namespace Game.Data
         public string losetext = "";            // Текст проигрыша
         public string loseimage = "";           // Картинка проигрыша
 
-        private float delta_money = 50.0f;
-        private float delta_mood = 50.0f;
-        private float delta_attention = 50.0f;
-        private float delta_mind = 50.0f;
-        private float delta_sociability = 50.0f;
-        private float delta_mystic = 50.0f;
+        private float delta_money = 10.0f;
+        private float delta_mood = 10.0f;
+        private float delta_attention = 10.0f;
+        private float delta_mind = 10.0f;
+        private float delta_sociability = 10.0f;
+        private float delta_mystic = 10.0f;
 
         // Установка времени и даты в игре
         public void SetTime()
