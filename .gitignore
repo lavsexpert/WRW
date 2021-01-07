@@ -3,5 +3,6 @@ Library
 Temp
 obj
 .vs
-Builds
 *.csproj
+.builds
+*.log
